@@ -22,8 +22,8 @@ from PySide2.QtCore import *
 
 # Information about a product --------------------------------------------------
 __product__ = "QIntSlider"
-__version__ = "0.1.0"
-__date__ = "2022-6-25"
+__version__ = "0.1.1"
+__date__ = "2022-6-26"
 __author__ = "Ryota Unzai"
 __credits__ = ["Ryota Unzai"]
 __maintainer__ = "Ryota Unzai"
@@ -63,11 +63,11 @@ class QIntSlider(QWidget):
     def __init__(self, parent=None, direction=None, *args, **kwargs):
         super(QIntSlider, self).__init__(parent, *args, **kwargs)
         if direction is not None:
-            if direction == QBoxLayout.RightToLeft:
+            self.__direction = direction
+            if self.__direction == QBoxLayout.RightToLeft or self.__direction == QBoxLayout.LeftToRight:
                 self.__slider = QSlider(Qt.Horizontal)
             else:
                 self.__slider = QSlider(Qt.Vertical)
-            self.__direction = direction
         else:
             self.__direction = QBoxLayout.LeftToRight
             self.__slider = QSlider(Qt.Horizontal)
